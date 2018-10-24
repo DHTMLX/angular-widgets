@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import '~dhx-vault/codebase/vault.css';
+@import '~dhx-spreadsheet/codebase//spreadsheet.css';
 html, body {
   height: 100%;
   padding:0px; margin:0px;
@@ -12,4 +13,9 @@ html, body {
 }
 .widget-box{
   width: 440px; height:320px;
+}
+
+.widget-box-wide{
+  width: 800px;
+  height: 400px;
 }
