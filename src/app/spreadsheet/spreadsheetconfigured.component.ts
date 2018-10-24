@@ -18,8 +18,14 @@ export class SpreadsheetConfiguredComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.spreadsheet = new Spreadsheet(this.container.nativeElement, {
-      toolbar: ["columns", "rows"]
+      editLine: false
     });
+    this.spreadsheet.parse([
+      { cell: "A1", value: 10 },
+      { cell: "B1", value: 20 }
+    ]);
+
+    this.spreadsheet.setStyle("A1", { background: "#F4D679" });
   }
 
   ngOnDestroy() {
