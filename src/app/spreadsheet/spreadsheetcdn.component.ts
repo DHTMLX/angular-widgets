@@ -21,8 +21,8 @@ export class SpreadsheetCDNComponent implements OnDestroy {
 
   constructor() {
     this.wait = fromCDN([
-      'https://cdn.dhtmlx.com/vault/3.0/vault.js',
-      'https://cdn.dhtmlx.com/vault/3.0/vault.css'
+      'https://cdn.dhtmlx.com/spreadsheet/3.0/spreadsheet.js',
+      'https://cdn.dhtmlx.com/spreadsheet/3.0/spreadsheet.css'
     ]).then(() => {
       this.spreadsheet = new dhx.Spreadsheet(this.container.nativeElement, {
         toolbar: this.toolbar,

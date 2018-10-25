@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataCollection, DataEvents } from 'dhx-vault';
 
 @Component({

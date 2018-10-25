@@ -1,8 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { SpreadsheetCDNComponent } from './spreadsheetcdn.component';
 
 @Component({
-  selector: 'app-basic-sample',
+  selector: 'app-cdn-sample',
   template: `
 <div class='app-box'>
   <p>Code for spreadsheet on this page is loaded through CDN on demand</p>

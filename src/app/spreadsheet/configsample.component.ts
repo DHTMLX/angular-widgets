@@ -1,7 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-basic-sample',
+  selector: 'app-config-sample',
   template: `
 <div class='app-box'>
   <p>Pre-configured component</p>

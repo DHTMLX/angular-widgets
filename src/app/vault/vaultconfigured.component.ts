@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Vault, DataCollection, VaultMode, IFileWrapper } from 'dhx-vault';
 
 @Component({
@@ -27,6 +27,6 @@ export class VaultConfiguredComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-      this.vault.destructor();
+    this.vault.destructor();
   }
 }
