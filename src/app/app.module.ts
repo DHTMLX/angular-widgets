@@ -13,14 +13,18 @@ import { CDNSampleComponent } from './vault/cdnsample.component';
 import { DataSampleComponent } from './vault/datasample.component';
 import { ConfigSampleComponent } from './vault/configsample.component';
 
-import {SpreadsheetComponent} from "./spreadsheet/spreadsheet.component";
-import {SpreadsheetCDNComponent} from "./spreadsheet/spreadsheetcdn.component";
-import {SpreadsheetConfiguredComponent} from "./spreadsheet/spreadsheetconfigured.component";
+import {SpreadsheetComponent} from './spreadsheet/spreadsheet.component';
+import {SpreadsheetCDNComponent} from './spreadsheet/spreadsheetcdn.component';
+import {SpreadsheetConfiguredComponent} from './spreadsheet/spreadsheetconfigured.component';
 
 import { SpreadsheetBasicSampleComponent } from './spreadsheet/basicsample.component';
 import { SpreadsheetCDNSampleComponent } from './spreadsheet/cdnsample.component';
 import { SpreadsheetDataSampleComponent } from './spreadsheet/datasample.component';
 import { SpreadsheetConfigSampleComponent } from './spreadsheet/configsample.component';
+
+import { RichtextBasicSampleComponent } from './richtext/basicsample.component';
+import { RichtextComponent } from './richtext/richtext.component';
+import { RichtextDataSampleComponent } from './richtext/datasample.component';
 
 const appRoutes: Routes = [
   { path: 'basic', component: BasicSampleComponent },
@@ -38,7 +42,10 @@ const appRoutes: Routes = [
   { path: 'spreadsheet/basic', component: SpreadsheetBasicSampleComponent },
   { path: 'spreadsheet/cdn', component: SpreadsheetCDNSampleComponent },
   { path: 'spreadsheet/data', component: SpreadsheetDataSampleComponent },
-  { path: 'spreadsheet/config', component: SpreadsheetConfigSampleComponent }
+  { path: 'spreadsheet/config', component: SpreadsheetConfigSampleComponent },
+
+  { path: 'richtext/basic', component: RichtextBasicSampleComponent },
+  { path: 'richtext/data', component: RichtextDataSampleComponent }
 ];
 
 @NgModule({
@@ -60,7 +67,11 @@ const appRoutes: Routes = [
     SpreadsheetBasicSampleComponent,
     SpreadsheetCDNSampleComponent,
     SpreadsheetDataSampleComponent,
-    SpreadsheetConfigSampleComponent
+    SpreadsheetConfigSampleComponent,
+
+    RichtextComponent,
+    RichtextBasicSampleComponent,
+    RichtextDataSampleComponent
   ],
   imports: [
     RouterModule.forRoot(
