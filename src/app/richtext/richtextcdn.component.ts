@@ -16,8 +16,8 @@ export class RichtextCDNComponent implements OnDestroy {
 
   constructor() {
     this.wait = fromCDN([
-      'https://cdn.dhtmlx.com/richtext/3.0/richtext.js',
-      'https://cdn.dhtmlx.com/richtext/3.0/richtext.css'
+      'http://cdn.dhtmlx.com/richtext/1.0/richtext.min.js',
+      'http://cdn.dhtmlx.com/richtext/1.0/richtext.min.css'
     ]).then(() => {
       this.richtext = new dhx.Richtext(this.container.nativeElement);
 
