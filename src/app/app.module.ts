@@ -25,6 +25,10 @@ import { SpreadsheetConfigSampleComponent } from './spreadsheet/configsample.com
 import { RichtextBasicSampleComponent } from './richtext/basicsample.component';
 import { RichtextComponent } from './richtext/richtext.component';
 import { RichtextDataSampleComponent } from './richtext/datasample.component';
+import { RichtextConfigSampleComponent } from './richtext/configsample.component';
+import { RichtextConfiguredComponent } from './richtext/richtextconfigurated.component';
+import { RichtextCDNComponent } from './richtext/richtextcdn.component';
+import { RichtextCDNSampleComponent } from './richtext/cdnsample.component';
 
 const appRoutes: Routes = [
   { path: 'basic', component: BasicSampleComponent },
@@ -39,13 +43,20 @@ const appRoutes: Routes = [
   redirectTo: 'spreadsheet/basic',
   pathMatch: 'full'
   },
+  { path: 'richtext',
+  redirectTo: 'richtext/basic',
+  pathMatch: 'full'
+  },
   { path: 'spreadsheet/basic', component: SpreadsheetBasicSampleComponent },
   { path: 'spreadsheet/cdn', component: SpreadsheetCDNSampleComponent },
   { path: 'spreadsheet/data', component: SpreadsheetDataSampleComponent },
   { path: 'spreadsheet/config', component: SpreadsheetConfigSampleComponent },
 
   { path: 'richtext/basic', component: RichtextBasicSampleComponent },
-  { path: 'richtext/data', component: RichtextDataSampleComponent }
+  { path: 'richtext/data', component: RichtextDataSampleComponent },
+  { path: 'richtext/config', component: RichtextConfigSampleComponent },
+  { path: 'richtext/cdn', component: RichtextCDNSampleComponent },
+
 ];
 
 @NgModule({
@@ -71,7 +82,11 @@ const appRoutes: Routes = [
 
     RichtextComponent,
     RichtextBasicSampleComponent,
-    RichtextDataSampleComponent
+    RichtextDataSampleComponent,
+    RichtextConfiguredComponent,
+    RichtextConfigSampleComponent,
+    RichtextCDNComponent,
+    RichtextCDNSampleComponent
   ],
   imports: [
     RouterModule.forRoot(
