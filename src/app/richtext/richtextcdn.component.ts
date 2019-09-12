@@ -8,7 +8,7 @@ declare var dhx;
   template: `<div #widget class='widget-box-wide'></div>`
 })
 export class RichtextCDNComponent implements OnDestroy {
-  @ViewChild('widget') container: ElementRef;
+  @ViewChild('widget', {static: true}) container: ElementRef;
   richtext: any;
   wait: Promise<void>;
 
@@ -16,8 +16,8 @@ export class RichtextCDNComponent implements OnDestroy {
 
   constructor() {
     this.wait = fromCDN([
-      'http://cdn.dhtmlx.com/richtext/1.0/richtext.min.js',
-      'http://cdn.dhtmlx.com/richtext/1.0/richtext.min.css'
+      'https://cdn.dhtmlx.com/richtext/edge/richtext.js',
+      'https://cdn.dhtmlx.com/richtext/edge/richtext.css'
     ]).then(() => {
       this.richtext = new dhx.Richtext(this.container.nativeElement);
 

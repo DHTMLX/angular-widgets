@@ -13,7 +13,7 @@ import { SpreadsheetCDNComponent } from './spreadsheetcdn.component';
 </div>`
 })
 export class SpreadsheetCDNSampleComponent {
-  @ViewChild('files') files: SpreadsheetCDNComponent;
+  @ViewChild('files', {static: true}) files: SpreadsheetCDNComponent;
 
   loadData(ev: any) {
 	  ev.spreadsheet.parse([

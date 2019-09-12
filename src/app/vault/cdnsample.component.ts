@@ -15,7 +15,7 @@ import { VaultCDNComponent } from './vaultcdn.component';
 </div>`
 })
 export class CDNSampleComponent implements OnInit {
-  @ViewChild('files') files: VaultCDNComponent;
+  @ViewChild('files', {static: true}) files: VaultCDNComponent;
 
   ngOnInit() {
     const sub = this.files;
