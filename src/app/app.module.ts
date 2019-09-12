@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { AppToolbarComponent } from './appToolbar/appToolbar.component';
 
 import { VaultComponent } from './vault/vault.component';
 import { VaultConfiguredComponent } from './vault/vaultconfigured.component';
@@ -62,6 +63,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    AppToolbarComponent,
 
     VaultComponent,
     VaultConfiguredComponent,
