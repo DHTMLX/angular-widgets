@@ -2864,15 +2864,15 @@ dezalgo@^1.0.0:
     asap "^2.0.0"
     wrappy "1"
 
-dhx-richtext@3.0.0:
+dhx-richtext@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/dhx-richtext/-/dhx-richtext-1.1.1.tgz#6d0afbfe82ddcd2c744da20b40a087bfc37b070a"
   integrity sha512-MEOVRxwkBVXn3IYMZP58HJno4YtVQsZmzpf+MX52Ev71zlmjt9bVkeSo3PKRrcijRRTzsMWZR57R1afEsAudOw==
 
-dhx-spreadsheet@^3.0.0:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/dhx-spreadsheet/-/dhx-spreadsheet-3.0.2.tgz#4d669a1da70ff1b5f4084ea9d3abc218e5c243b6"
-  integrity sha512-V0S/qnMwabr2jFPcqiIhgE6Q29pNh1fJ6KtRd9cE25XovD0v7+m8qETvbaCc+3YJ3X2ADJozbyaMgEpCkV9ICA==
+dhx-spreadsheet@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/dhx-spreadsheet/-/dhx-spreadsheet-3.1.2.tgz#6ee22e14b3fda34239d70ce0234907bb3f605d83"
+  integrity sha512-R6SfqDsKIBTDO3s+GWeaOqh8C099S0eU4DhNhgKCue5Lc7o/jEzUpEXqY3GuzXibJxZ9G76tra+uYFzPs+EwAw==
 
 dhx-suite@^6.1.4:
   version "6.1.4"
