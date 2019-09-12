@@ -6,7 +6,7 @@ import { Richtext } from 'dhx-richtext';
   template: `<div #widget class='widget-box-wide'></div>`
 })
 export class RichtextConfiguredComponent implements OnInit, OnDestroy {
-  @ViewChild('widget') container: ElementRef;
+  @ViewChild('widget', {static: false}) container: ElementRef;
   richtext: Richtext;
 
   ngOnInit() {

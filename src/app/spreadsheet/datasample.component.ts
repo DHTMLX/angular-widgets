@@ -18,7 +18,7 @@ import { Component, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular
 })
 export class SpreadsheetDataSampleComponent implements AfterViewInit {
   event: string;
-  @ViewChild('spreadsheet') spreadsheet;
+  @ViewChild('spreadsheet', {static: false}) spreadsheet;
   constructor(private cd: ChangeDetectorRef) {
   }
   ngAfterViewInit() {

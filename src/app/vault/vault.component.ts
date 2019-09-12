@@ -6,7 +6,7 @@ import { Vault, DataCollection, VaultMode, IFileWrapper } from 'dhx-vault';
   template: `<div #widget class='widget-box'></div>`
 })
 export class VaultComponent implements OnInit, OnDestroy {
-  @ViewChild('widget') container: ElementRef;
+  @ViewChild('widget', {static: false}) container: ElementRef;
   vault: Vault;
 
   @Input() mode: string;

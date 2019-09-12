@@ -8,7 +8,7 @@ declare var dhx;
   template: `<div #widget class='widget-box-wide'></div>`
 })
 export class RichtextCDNComponent implements OnDestroy {
-  @ViewChild('widget') container: ElementRef;
+  @ViewChild('widget', {static: false}) container: ElementRef;
   richtext: any;
   wait: Promise<void>;
 

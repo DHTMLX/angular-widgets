@@ -8,7 +8,7 @@ declare var dhx;
   template: `<div #widget class='widget-box'></div>`
 })
 export class VaultCDNComponent implements OnDestroy {
-  @ViewChild('widget') container: ElementRef;
+  @ViewChild('widget', {static: false}) container: ElementRef;
   vault: any;
   wait: Promise<void>;
 
