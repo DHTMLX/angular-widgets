@@ -6,7 +6,7 @@ import { Richtext } from 'dhx-richtext';
   template: `<div #widget class='widget-box'></div>`
 })
 export class RichtextComponent implements OnInit, OnDestroy {
-  @ViewChild('widget', {static: false}) container: ElementRef;
+  @ViewChild('widget', {static: true}) container: ElementRef;
   richtext: Richtext;
 
   @Input() mode: 'document' | 'classic' = 'classic';

@@ -6,7 +6,7 @@ import { Spreadsheet } from 'dhx-spreadsheet';
   template: `<div #widget class='widget-box-wide'></div>`
 })
 export class SpreadsheetConfiguredComponent implements OnInit, OnDestroy {
-  @ViewChild('widget', {static: false}) container: ElementRef;
+  @ViewChild('widget', {static: true}) container: ElementRef;
   spreadsheet: Spreadsheet;
 
   @Input() toolbar: string[];

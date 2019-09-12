@@ -6,7 +6,7 @@ import { Vault, DataCollection, VaultMode, IFileWrapper } from 'dhx-vault';
   template: `<div #widget class='widget-box'></div>`
 })
 export class VaultConfiguredComponent implements OnInit, OnDestroy {
-  @ViewChild('widget', {static: false}) container: ElementRef;
+  @ViewChild('widget', {static: true}) container: ElementRef;
   vault: Vault;
 
   ngOnInit() {

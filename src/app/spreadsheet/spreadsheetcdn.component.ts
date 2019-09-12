@@ -8,7 +8,7 @@ declare var dhx;
   template: `<div #widget class='widget-box-wide'></div>`
 })
 export class SpreadsheetCDNComponent implements OnDestroy {
-  @ViewChild('widget', {static: false}) container: ElementRef;
+  @ViewChild('widget', {static: true}) container: ElementRef;
   spreadsheet: any;
   wait: Promise<void>;
 
