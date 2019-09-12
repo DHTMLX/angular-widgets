@@ -1,4 +1,4 @@
-## DHTMLX Widgets + Angular 6.1
+## DHTMLX Widgets + Angular 8.2.6
 
 In most samples DHTMLX Widgets are loaded through NPM that provides limited (GPL) version of components. For production you should use the PRO version.
 
