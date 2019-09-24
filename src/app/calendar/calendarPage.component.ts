@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, } from '@angular/core';
 
 @Component({
   selector: 'calendar-page',
   template: `
 	<main>
-		<section class="hgroup" id="basic">
+		<section class="hgroup active" id="basic">
 			<h3>
 				NPM basic inintialization 
 				<a href="#basic" class="anchor">

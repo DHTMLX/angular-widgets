@@ -31,6 +31,7 @@ export class AppToolbarComponent implements OnInit, OnDestroy {
 					id: "basic_link",
 					value: "Basic init",
 					group: "toolbarNav",
+					active: true,
 					twoSate: true,
 					hidden: true,
 				},
@@ -121,6 +122,7 @@ export class AppToolbarComponent implements OnInit, OnDestroy {
 		})
 		if(window.location.hash) {
 			this.toolbar.data.update(window.location.hash.substring(1) + '_link', {active: true})
+			window.location.hash !== '#basic' && this.toolbar.data.update('basic_link', {active: false})
 		}
 	}
 	ngOnChanges(changes: SimpleChanges) {

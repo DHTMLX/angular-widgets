@@ -55,9 +55,10 @@ export class AppComponent implements OnInit {
     }
   }
   ngAfterViewChecked() {
-    this.setActiveStateForExample(window.location.hash.substring(1))
+    window.location.hash && this.setActiveStateForExample(window.location.hash.substring(1))
   }
   setActiveStateForExample(id) {
+    console.log('fucking remove')
     this.activeSidebarLink && this.aciveHeadersLinks[this.activeSidebarLink].map(item => {
       if(item === id) {
         this.container.nativeElement.querySelector('#' + item) && this.container.nativeElement.querySelector('#' + item).classList.add('active')
