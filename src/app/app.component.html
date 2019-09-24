@@ -1,32 +1,9 @@
-<div class='app-screen'>
-  <div class='app-header'>
-    <h1>Using DHTMLX widgets in an Angular app</h1>
-  </div>
-  <div class='app-page'>
-    <div class='app-sidebar'>
-      <h3>Vault</h3>
-      <nav>
-        <a routerLink="/basic" routerLinkActive="active">Basic usage</a>
-        <a routerLink="/data" routerLinkActive="active">Data / Events</a>
-        <a routerLink="/config" routerLinkActive="active">Pre-configured widget</a>
-        <a routerLink="/cdn" routerLinkActive="active">Load from CDN</a>
-      </nav>
-      <h3>Spreadsheet</h3>
-      <nav>
-        <a routerLink="/spreadsheet/basic" routerLinkActive="active">Basic usage</a>
-        <a routerLink="/spreadsheet/data" routerLinkActive="active">Data / Events</a>
-        <a routerLink="/spreadsheet/config" routerLinkActive="active">Pre-configured widget</a>
-        <a routerLink="/spreadsheet/cdn" routerLinkActive="active">Load from CDN</a>
-      </nav>
-      <h3>Richtext</h3>
-      <nav>
-        <a routerLink="/richtext/basic" routerLinkActive="active">Basic usage</a>
-        <a routerLink="/richtext/data" routerLinkActive="active">Data / Events</a>
-        <a routerLink="/richtext/config" routerLinkActive="active">Pre-configured widget</a>
-        <a routerLink="/richtext/cdn" routerLinkActive="active">Load from CDN</a>
-      </nav>
-    </div>
-    <div class='app-content'>
+
+<div class='app-screen' style="min-height: 100vh; display: flex">
+  <app-sidebar [activeSidebarLink]='activeSidebarLink' (activeWidgetToEmmit)="getActiveWidget($event)"></app-sidebar>
+  <div class="app-screen__inner" style="flex-basis: auto; flex-grow: 1">
+    <app-toolbar (activeExampleToEmmit)="getActiveExample($event)" [aciveHeadersLinks]='aciveHeadersLinks' [activeSidebarLink]='activeSidebarLink'></app-toolbar>
+    <div class='app-content' #appcontent style="max-height: calc(100vh - 57px); overflow: auto">
       <router-outlet></router-outlet>
     </div>
   </div>
