@@ -25,8 +25,6 @@ export class AppComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         this.activeWidget = event.url.split('#')[0] && event.url.split('#')[0].substring(1)
         this.activeExample = event.url.split('#')[1] && event.url.split('#')[1]
-        this.getHeaderLinks()
-        console.log('object', this.activeWidget, this.activeExample, this.headerAncors )
         if (this.activeWidget.length > 0) {
           this.meta.updateTag({name: 'title', content: `DHX ${this.activeWidget}-angular`})
           this.meta.updateTag({name: 'description', content: `How to use DHTMLx ${this.activeWidget} with angular`})
@@ -40,21 +38,15 @@ export class AppComponent implements OnInit {
    });
   }
 
-  getHeaderLinks() {
-    const TOOOLBAR_LINKS = {
-      calendar: ['basic', 'cdn', 'configured', 'configurable', 'events'],
-      list: ['basic', 'cdn', 'configured', 'configurable', 'events', 'data'],
-    }[this.activeWidget]
-    this.headerAncors = TOOOLBAR_LINKS
-  }
-
   ngOnInit(){
     // this.activeSidebarLink = window.location.pathname.substr(1)
   }
 
   ngAfterContentInit() {
+    console.log('ng Ater Init');
     if (window.location.hash && this.container.nativeElement) {
-      const containerToScroll = this.container.nativeElement.querySelector(window.location.hash);
+      const containerToScroll = document.querySelector('#cdn');
+      console.log('object', containerToScroll)
       if (containerToScroll) {
         const scrollPosition = containerToScroll.offsetTop
         this.container.nativeElement.scrollTo({

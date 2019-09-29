@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, OnDestroy, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, OnDestroy, ViewChild, Output, EventEmitter, SimpleChanges, SimpleChange } from '@angular/core';
 import { Router } from '@angular/router';
 import { Sidebar } from 'dhx-suite';
 
@@ -7,10 +7,13 @@ import { Sidebar } from 'dhx-suite';
   template: `<div #appsidebar class='app-sidebar' style="height: 100%"></div>`,
 })
 export class AppSidebarComponent implements OnInit, OnDestroy {
-	constructor(private router: Router) {}
+	constructor(private router: Router) {
+
+	}
 	
   @ViewChild('appsidebar', {static: true}) container: ElementRef;
 	sidebar: Sidebar;
+
 	
 	@Input() activeWidget: string;
 	@Output() activeWidgetToEmmit = new EventEmitter<string>()
@@ -44,16 +47,17 @@ export class AppSidebarComponent implements OnInit, OnDestroy {
 				},
 			],
 		});
-		
-		// this.activeSidebarLink && this.sidebar.data.update(this.activeSidebarLink + "-link", {active: true})
+		this.sidebar.events.on('click', id => {
+			this.router.navigate(['/' + id.split('-')[0]])
+		})
 		this.sidebar.events.on('click', id => {
 			this.router.navigate(['/' + id.split('-')[0]])
 		})
   }
-	ngOnChanges(change) {
-		console.log('this.sidebar', this.sidebar)
-		if (change.activeWidget) {
-			this.sidebar && this.sidebar.data.update(change.activeWidget.currentValue + '-link')
+	ngOnChanges(changes: SimpleChanges) {
+		const activeWidget: SimpleChange = changes.activeWidget;
+		if (activeWidget.currentValue) {
+			this.sidebar && this.sidebar.data.update(activeWidget.currentValue + '-link', {active: true})
 		}
 	}
   ngOnDestroy() {

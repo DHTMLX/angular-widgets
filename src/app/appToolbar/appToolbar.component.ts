@@ -1,6 +1,12 @@
 import { Component, ElementRef, Input, OnInit, Output, EventEmitter, OnDestroy, ViewChild, SimpleChanges, SimpleChange } from '@angular/core';
 import { Toolbar } from 'dhx-suite';
 import { Router } from '@angular/router';
+
+const TOOOLBAR_LINKS = {
+	all: ['basic', 'cdn', 'configured', 'configurable', 'events', 'data'],
+	calendar: ['basic', 'cdn', 'configured', 'configurable', 'events'],
+	list: ['basic', 'cdn', 'configured', 'configurable', 'events', 'data'],
+}
 @Component({
   selector: 'app-toolbar',
 	template: `<div #apptoolbar class='app-toolbar'></div>`,
@@ -12,7 +18,7 @@ export class AppToolbarComponent implements OnInit, OnDestroy {
 	toolbar: Toolbar;
 	
 	@Input() aciveHeadersLinks: [];
-	@Input() activeSidebarLink?: string;
+	@Input() activeWidget?: string;
   @Output() activeExampleToEmmit = new EventEmitter<string>()
 
   ngOnInit() {
@@ -27,6 +33,7 @@ export class AppToolbarComponent implements OnInit, OnDestroy {
 				{
 					id: "separ",
 					type: "separator",
+					hidden: true,
 				},
 				{
 					id: "basic_link",
@@ -89,19 +96,18 @@ export class AppToolbarComponent implements OnInit, OnDestroy {
 				}
 			],
 		});
-		this.setToolbarActiveItems()
 		
 		this.toolbar.events.on('click', id => {
 			switch (id) {
 				case 'doc': 
-					if (this.activeSidebarLink === 'pivot') {
+					if (this.activeWidget === 'pivot') {
 						window.open('https://docs.dhtmlx.com/pivot/index.html', '_blank')
 					} else {
-						window.open('https://docs.dhtmlx.com/suite/' + this.activeSidebarLink + '__index.html', '_blank')
+						window.open('https://docs.dhtmlx.com/suite/' + this.activeWidget + '__index.html', '_blank')
 					}
 					break;
 				case 'trial':
-					if (this.activeSidebarLink=== 'pivot') {
+					if (this.activeWidget=== 'pivot') {
 						window.open('https://dhtmlx.com/docs/products/dhtmlxPivot/download.shtml', '_blank')
 					} else {
 						window.open('https://dhtmlx.com/docs/products/dhtmlxSuite/download.shtml', '_blank')
@@ -124,22 +130,26 @@ export class AppToolbarComponent implements OnInit, OnDestroy {
 		}
 	}
 	ngOnChanges(changes: SimpleChanges) {
-		// const activeSidebarLink: SimpleChange = changes.activeSidebarLink;
-		// if (activeSidebarLink.previousValue !== activeSidebarLink.currentValue) {
-		//   this.toolbar && this.setToolbarActiveItems()
-		// }
-		// this.toolbar && this.aciveHeadersLinks[this.activeSidebarLink].map(item => {
-		// 	this.toolbar.data.update(item + "_link", {active: false})
-		// })
+		const activeWidget: SimpleChange = changes.activeWidget;
+		if (this.toolbar) {
+			if (activeWidget.currentValue) {
+				TOOOLBAR_LINKS.all.map((example, key) => {
+					this.toolbar.data.update(example + '_link', {hidden: TOOOLBAR_LINKS[activeWidget.currentValue][key] !== example})
+				}) 
+				this.toolbar.data.update('doc', {html: `<span>DHX ${activeWidget.currentValue.charAt(0).toUpperCase() + activeWidget.currentValue.slice(1)} documentation</span>`})
+				this.toolbar.data.update('title', {value: `Using DHTMLX ${activeWidget.currentValue.charAt(0).toUpperCase() + activeWidget.currentValue.slice(1) || 'widgets'} with Angular`})
+				this.toolbar.data.update('separ', {hidden: false})
+			} else {
+				TOOOLBAR_LINKS.all.map((example, key) => {
+					this.toolbar.data.update(example + '_link', {hidden: true})
+				}) 
+				this.toolbar.data.update('doc', {html: `<span><span>`})
+				this.toolbar.data.update('title', {value: `Using DHTMLX widgets with Angular`})
+				this.toolbar.data.update('separ', {hidden: true})
+			}
+		}
 	}
 
-	setToolbarActiveItems() {
-		this.activeSidebarLink && this.toolbar.data.update('title', {value: `Using DHTMLX ${this.activeSidebarLink.charAt(0).toUpperCase() + this.activeSidebarLink.slice(1) || 'widgets'} with Angular`})
-		this.activeSidebarLink && this.toolbar.data.update('doc', {html: `<span>DHX ${this.activeSidebarLink.charAt(0).toUpperCase() + this.activeSidebarLink.slice(1)} documentation</span>`})
-		this.aciveHeadersLinks && this.activeSidebarLink && this.aciveHeadersLinks[this.activeSidebarLink].map(item => {
-			this.toolbar.data.update(item + "_link", {hidden: false})
-		})
-	}
   ngOnDestroy() {
     this.toolbar.destructor();
   }

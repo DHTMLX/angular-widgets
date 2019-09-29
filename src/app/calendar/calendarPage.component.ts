@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'calendar-page',
   template: `
 	<main>
-		<section class="hgroup active" id="basic">
+		<section class="hgroup active" id="basic" fragment="basic">
 			<h3>
 				NPM basic inintialization 
 				<a href="#basic" class="anchor">
@@ -18,7 +18,7 @@ import { Component } from '@angular/core';
 				<calendar-base></calendar-base>
 			</div>
 		</section>
-		<section class="hgroup" id="cdn">
+		<section class="hgroup" id="cdn" fragment="cdn">
 			<h3>
 				CDN basic inintialization 
 				<a href="#cdn" class="anchor">
