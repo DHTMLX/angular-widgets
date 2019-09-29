@@ -10,6 +10,18 @@ import { CalendarPage } from './calendar/calendarPage.component'
 import { CalendarBaseComponent} from './calendar/calendarBase.component'
 import { CalendarCdnComponent } from './calendar/calendarCdn.component'
 import { CalendarConfiguredComponent } from './calendar/calendarConfigured.component'
+import { CalendarParent } from './calendar/calendarConfigurableWithDerectives/calendarParent.component'
+import { CalendarChild } from './calendar/calendarConfigurableWithDerectives/calendarChild.component'
+import { CalendarEventsComponent } from './calendar/calendarEvents.components';
+
+import { ListPage } from './list/listPage.component'
+import { ListBaseComponent} from './list/listBase.component'
+import { ListCdnComponent } from './list/listCdn.component'
+import { ListConfiguredComponent } from './list/listConfigured.component'
+import { ListEventsComponent } from './list/ListEvents.components';
+import { ListDataComponent } from './list/ListData.components';
+import { ListParent } from './list/listConfigurableWithDerectives/listParent.component'
+import { ListChild } from './list/listConfigurableWithDerectives/listChild.component'
 
 import { VaultComponent } from './vault/vault.component';
 import { VaultConfiguredComponent } from './vault/vaultconfigured.component';
@@ -31,8 +43,11 @@ import { SpreadsheetConfigSampleComponent } from './spreadsheet/configsample.com
 
 
 
+
+
 const appRoutes: Routes = [
   { path: 'calendar', component: CalendarPage },
+  { path: 'list', component: ListPage },
 ];
 
 @NgModule({
@@ -45,6 +60,18 @@ const appRoutes: Routes = [
     CalendarBaseComponent,
     CalendarCdnComponent,
     CalendarConfiguredComponent,
+    CalendarEventsComponent,
+    CalendarChild,
+    CalendarParent,
+
+    ListPage,
+    ListBaseComponent,
+    ListCdnComponent,
+    ListConfiguredComponent,
+    ListEventsComponent,
+    ListDataComponent,
+    ListParent,
+    ListChild,
 
     VaultComponent,
     VaultConfiguredComponent,
@@ -65,7 +92,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     RouterModule.forRoot(
-      appRoutes
+      appRoutes,
     ),
     BrowserModule
   ],
@@ -74,4 +101,4 @@ const appRoutes: Routes = [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -7,6 +7,8 @@ export interface Todo {
   activeSidebarLink?: string;
 }
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,14 +16,21 @@ export interface Todo {
 })
 export class AppComponent implements OnInit {
   @ViewChild('appcontent', {static: true}) container: ElementRef;
+  @Input() activeWidget: string;
+  @Input() activeExample: string;
+  @Input() headerAncors: [];
 
   constructor(private meta: Meta, private titleService: Title, private router: Router) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
-        if (window.location.pathname.substr(1).length > 0) {
-          this.meta.updateTag({name: 'title', content: `DHX ${window.location.pathname.substr(1)}-angular`})
-          this.meta.updateTag({name: 'description', content: `How to use DHTMLx ${window.location.pathname.substr(1)} with angular`})
-          this.titleService.setTitle( `DHX ${window.location.pathname.substr(1)}-angular`);
+        this.activeWidget = event.url.split('#')[0] && event.url.split('#')[0].substring(1)
+        this.activeExample = event.url.split('#')[1] && event.url.split('#')[1]
+        this.getHeaderLinks()
+        console.log('object', this.activeWidget, this.activeExample, this.headerAncors )
+        if (this.activeWidget.length > 0) {
+          this.meta.updateTag({name: 'title', content: `DHX ${this.activeWidget}-angular`})
+          this.meta.updateTag({name: 'description', content: `How to use DHTMLx ${this.activeWidget} with angular`})
+          this.titleService.setTitle( `DHX ${this.activeWidget}-angular`);
         } else {
           this.titleService.setTitle( 'DHX Angular' );
           this.meta.addTag({ name: 'title', content: 'DHX Angular' });
@@ -31,14 +40,16 @@ export class AppComponent implements OnInit {
    });
   }
 
-  activeExample: string
-  activeSidebarLink: string
-  aciveHeadersLinks = {
-    calendar: ['basic', 'cdn', 'configured']
+  getHeaderLinks() {
+    const TOOOLBAR_LINKS = {
+      calendar: ['basic', 'cdn', 'configured', 'configurable', 'events'],
+      list: ['basic', 'cdn', 'configured', 'configurable', 'events', 'data'],
+    }[this.activeWidget]
+    this.headerAncors = TOOOLBAR_LINKS
   }
 
   ngOnInit(){
-    this.activeSidebarLink = window.location.pathname.substr(1)
+    // this.activeSidebarLink = window.location.pathname.substr(1)
   }
 
   ngAfterContentInit() {
@@ -54,30 +65,27 @@ export class AppComponent implements OnInit {
       }
     }
   }
-  ngAfterViewChecked() {
-    window.location.hash && this.setActiveStateForExample(window.location.hash.substring(1))
-  }
-  setActiveStateForExample(id) {
-    console.log('fucking remove')
-    this.activeSidebarLink && this.aciveHeadersLinks[this.activeSidebarLink].map(item => {
-      if(item === id) {
-        this.container.nativeElement.querySelector('#' + item) && this.container.nativeElement.querySelector('#' + item).classList.add('active')
-      } else {
-        this.container.nativeElement.querySelector('#' + item) && this.container.nativeElement.querySelector('#' + item).classList.remove('active')
-      }
-    })
-  }
-  getActiveWidget(widget: string) {
-    this.activeSidebarLink = widget.split('-')[0]
-  }
-  getActiveExample(id: string) {
-    const scrollPosition = this.container.nativeElement && this.container.nativeElement.querySelector('#' + id.split('_')[0]).offsetTop
-    this.container.nativeElement.scrollTo({
-      top: scrollPosition - 57,
-      behavior: 'smooth',
-      inline: 'center',
-    })
-    this.setActiveStateForExample(id.split('_')[0])
-    history.pushState(null, null, window.location.pathname +'#' + id.split('_')[0])
-  }
+
+  // setActiveStateForExample(id) {
+  //   this.activeSidebarLink && this.aciveHeadersLinks[this.activeSidebarLink].map(item => {
+  //     if(item === id) {
+  //       this.container.nativeElement.querySelector('#' + item) && this.container.nativeElement.querySelector('#' + item).classList.add('active')
+  //     } else {
+  //       this.container.nativeElement.querySelector('#' + item) && this.container.nativeElement.querySelector('#' + item).classList.remove('active')
+  //     }
+  //   })
+  // }
+  // getActiveWidget(widget: string) {
+  //   this.activeSidebarLink = widget.split('-')[0]
+  // }
+  // getActiveExample(id: string) {
+  //   const scrollPosition = this.container.nativeElement && this.container.nativeElement.querySelector('#' + id.split('_')[0]).offsetTop
+  //   this.container.nativeElement.scrollTo({
+  //     top: scrollPosition - 57,
+  //     behavior: 'smooth',
+  //     inline: 'center',
+  //   })
+  //   this.setActiveStateForExample(id.split('_')[0])
+  //   history.pushState(null, null, window.location.pathname +'#' + id.split('_')[0])
+  // }
 }

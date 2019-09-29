@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'calendar-page',
@@ -12,7 +12,7 @@ import { Component, ViewChild, ElementRef, } from '@angular/core';
 				</a>
 			</h3>
 			<p>
-				<a href="https://github.com/DHTMLX/angular-widgets/blob/master/src/app/richtext/calendarBase.component.ts" target="_blank"  rel="noopener noreferrer" >Code example </a> 
+				<a href="https://github.com/DHTMLX/angular-widgets/blob/master/src/app/calendar/calendarBase.component.ts" target="_blank"  rel="noopener noreferrer" >Code example </a> 
 			</p>
 			<div>
 				<calendar-base></calendar-base>
@@ -26,7 +26,7 @@ import { Component, ViewChild, ElementRef, } from '@angular/core';
 				</a>
 			</h3>
 			<p>
-				<a href="https://github.com/DHTMLX/angular-widgets/blob/master/src/app/richtext/calendarCdn.component.ts" target="_blank"  rel="noopener noreferrer" >Code example </a> 
+				<a href="https://github.com/DHTMLX/angular-widgets/blob/master/src/app/calendar/calendarCdn.component.ts" target="_blank"  rel="noopener noreferrer" >Code example </a> 
 			</p>
 			<div>
 				<calendar-cdn></calendar-cdn>
@@ -40,10 +40,38 @@ import { Component, ViewChild, ElementRef, } from '@angular/core';
 				</a>
 			</h3>
 			<p>
-				<a href="https://github.com/DHTMLX/angular-widgets/blob/master/src/app/richtext/calendarConfigured.component.ts" target="_blank"  rel="noopener noreferrer" >Code example </a> 
+				<a href="https://github.com/DHTMLX/angular-widgets/blob/master/src/app/calendar/calendarConfigured.component.ts" target="_blank"  rel="noopener noreferrer" >Code example </a> 
 			</p>
 			<div>
 				<calendar-configured></calendar-configured>
+			</div>
+		</section>
+		<section class="hgroup" id="configurable">
+			<h3>
+				Configurable with derectives
+				<a href="#configured" class="anchor">
+					<img src="/static/link.svg" alt="" />
+				</a>
+			</h3>
+			<p>
+				<a href="https://github.com/DHTMLX/angular-widgets/blob/master/src/app/calendar/calendarConfigurableWithDerectives/" target="_blank"  rel="noopener noreferrer" >Code example </a> 
+			</p>
+			<div>
+				<calendar-parent></calendar-parent>
+			</div>
+		</section>
+		<section class="hgroup" id="events">
+			<h3>
+				Component events
+				<a href="#events" class="anchor">
+					<img src="/static/link.svg" alt="" />
+				</a>
+			</h3>
+			<p>
+				<a href="https://github.com/DHTMLX/angular-widgets/blob/master/src/app/calendar/calendarEvents.component.ts" target="_blank"  rel="noopener noreferrer" >Code example </a> 
+			</p>
+			<div>
+				<calendar-events></calendar-events>
 			</div>
 		</section>
 	<main>`

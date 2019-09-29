@@ -12,7 +12,7 @@ export class AppSidebarComponent implements OnInit, OnDestroy {
   @ViewChild('appsidebar', {static: true}) container: ElementRef;
 	sidebar: Sidebar;
 	
-	@Input() activeSidebarLink?: string;
+	@Input() activeWidget: string;
 	@Output() activeWidgetToEmmit = new EventEmitter<string>()
 
   ngOnInit() {
@@ -36,16 +36,26 @@ export class AppSidebarComponent implements OnInit, OnDestroy {
 					group: "nav",
 					twoState: true
 				},
+				{
+					value: 'List',
+					id: 'list-link',
+					group: "nav",
+					twoState: true
+				},
 			],
 		});
 		
-		this.activeSidebarLink && this.sidebar.data.update(this.activeSidebarLink + "-link", {active: true})
+		// this.activeSidebarLink && this.sidebar.data.update(this.activeSidebarLink + "-link", {active: true})
 		this.sidebar.events.on('click', id => {
 			this.router.navigate(['/' + id.split('-')[0]])
-			this.activeWidgetToEmmit.emit(id)
 		})
   }
-
+	ngOnChanges(change) {
+		console.log('this.sidebar', this.sidebar)
+		if (change.activeWidget) {
+			this.sidebar && this.sidebar.data.update(change.activeWidget.currentValue + '-link')
+		}
+	}
   ngOnDestroy() {
     this.sidebar.destructor();
   }

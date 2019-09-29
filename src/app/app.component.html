@@ -1,6 +1,6 @@
 
 <div class='app-screen' style="min-height: 100vh; display: flex">
-  <app-sidebar [activeSidebarLink]='activeSidebarLink' (activeWidgetToEmmit)="getActiveWidget($event)"></app-sidebar>
+  <app-sidebar [activeWidget]='activeWidget' (activeWidgetToEmmit)="getActiveWidget($event)"></app-sidebar>
   <div class="app-screen__inner" style="flex-basis: auto; flex-grow: 1">
     <app-toolbar (activeExampleToEmmit)="getActiveExample($event)" [aciveHeadersLinks]='aciveHeadersLinks' [activeSidebarLink]='activeSidebarLink'></app-toolbar>
     <div class='app-content' #appcontent style="max-height: calc(100vh - 57px); overflow: auto">

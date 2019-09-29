@@ -1,12 +1,13 @@
 import { Component, ElementRef, Input, OnInit, Output, EventEmitter, OnDestroy, ViewChild, SimpleChanges, SimpleChange } from '@angular/core';
 import { Toolbar } from 'dhx-suite';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-toolbar',
 	template: `<div #apptoolbar class='app-toolbar'></div>`,
 })
 
 export class AppToolbarComponent implements OnInit, OnDestroy {
+	constructor(private router: Router) {}
   @ViewChild('apptoolbar', {static: true}) container: ElementRef;
 	toolbar: Toolbar;
 	
@@ -31,7 +32,7 @@ export class AppToolbarComponent implements OnInit, OnDestroy {
 					id: "basic_link",
 					value: "Basic init",
 					group: "toolbarNav",
-					active: true,
+					active: false,
 					twoSate: true,
 					hidden: true,
 				},
@@ -50,8 +51,8 @@ export class AppToolbarComponent implements OnInit, OnDestroy {
 					hidden: true,
 				},
 				{
-					id: "props_link",
-					value: "Using props",
+					id: "configurable_link",
+					value: "Configurable",
 					group: "toolbarNav",
 					twoSate: true,
 					hidden: true,
@@ -66,7 +67,6 @@ export class AppToolbarComponent implements OnInit, OnDestroy {
 				{
 					id: "data_link",
           value: "Data",
-          type: "button",
 					group: "toolbarNav",
 					twoSate: true,
 					hidden: true,
@@ -110,11 +110,10 @@ export class AppToolbarComponent implements OnInit, OnDestroy {
 				case 'basic_link':
 				case 'cdn_link':
 				case 'configured_link':
-				case 'props_link':
+				case 'configurable_link':
 				case 'events_link':
 				case 'data_link':
-					this.toolbar.data.update(id, {active: true})
-					this.activeExampleToEmmit.emit(id)
+					this.router.navigate([window.location.pathname], {fragment: id.split('_')[0]})
 					break;
 				default:
 					break;
@@ -122,17 +121,16 @@ export class AppToolbarComponent implements OnInit, OnDestroy {
 		})
 		if(window.location.hash) {
 			this.toolbar.data.update(window.location.hash.substring(1) + '_link', {active: true})
-			window.location.hash !== '#basic' && this.toolbar.data.update('basic_link', {active: false})
 		}
 	}
 	ngOnChanges(changes: SimpleChanges) {
-		const activeSidebarLink: SimpleChange = changes.activeSidebarLink;
-		if (activeSidebarLink.previousValue !== activeSidebarLink.currentValue) {
-		  this.toolbar && this.setToolbarActiveItems()
-		}
-		this.toolbar && this.aciveHeadersLinks[this.activeSidebarLink].map(item => {
-			this.toolbar.data.update(item + "_link", {active: false})
-		})
+		// const activeSidebarLink: SimpleChange = changes.activeSidebarLink;
+		// if (activeSidebarLink.previousValue !== activeSidebarLink.currentValue) {
+		//   this.toolbar && this.setToolbarActiveItems()
+		// }
+		// this.toolbar && this.aciveHeadersLinks[this.activeSidebarLink].map(item => {
+		// 	this.toolbar.data.update(item + "_link", {active: false})
+		// })
 	}
 
 	setToolbarActiveItems() {
