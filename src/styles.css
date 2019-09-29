@@ -148,3 +148,8 @@ main {
     font-size: 18px;
     margin-right: 12px!important;
 }
+.button.button--bordered {
+	background: #fff;
+	color: #027abc;
+	border: 2px solid #027abc;
+}
