@@ -48,6 +48,21 @@ import { SpreadsheetConfigSampleComponent } from './spreadsheet/configsample.com
 const appRoutes: Routes = [
   { path: 'calendar', component: CalendarPage },
   { path: 'list', component: ListPage },
+  // { path: 'toolbart', component: ToolbarPage },
+  // { path: 'timepicker', component: TimepickerPage },
+  // { path: 'slider', component: SliderrPage },
+  // { path: 'colorpicker', component: ColorpickerPage },
+  // { path: 'sidebar', component: SidebarPage },
+  // { path: 'ribbon', component: RibbonPage },
+  // { path: 'dataview', component: DataviewPage },
+  // { path: 'grid', component: GridPage },
+  // { path: 'menu', component: MenuPage },
+  // { path: 'tabbar', component: TabbarPage },
+  // { path: 'tree', component: TreePage },
+  // { path: 'chart', component: ChartPage },
+  // { path: 'message', component: MessagePage },
+  // { path: 'popup', component: PopupPage },
+  // { path: 'pivot', component: PivotPage },
 ];
 
 @NgModule({

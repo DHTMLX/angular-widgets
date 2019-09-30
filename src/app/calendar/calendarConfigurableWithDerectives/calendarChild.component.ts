@@ -20,7 +20,6 @@ export class CalendarChild implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    console.log('object', this.css, this.value, this.timePicker, this.timeFormat)
     this.calendar = new Calendar(this.container.nativeElement, {
       css: this.css,
       weekNumbers: this.weekNumbers,

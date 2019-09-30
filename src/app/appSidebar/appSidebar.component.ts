@@ -45,6 +45,102 @@ export class AppSidebarComponent implements OnInit, OnDestroy {
 					group: "nav",
 					twoState: true
 				},
+				{
+					value: 'Toolbar',
+					id: 'toolbar-link',
+					group: "nav",
+					twoState: true
+				},
+				{
+					value: 'Timepicker',
+					id: 'timepicker-link',
+					group: "nav",
+					twoState: true
+				},
+				{
+					value: 'Slider',
+					id: 'slider-link',
+					group: "nav",
+					twoState: true
+				},
+				{
+					value: 'Colorpicker',
+					id: 'colorpicker-link',
+					group: "nav",
+					twoState: true
+				},
+				{
+					value: 'Sidebar',
+					id: 'sidebar-link',
+					group: "nav",
+					twoState: true
+				},
+				{
+					value: 'Ribbon',
+					id: 'ribbon-link',
+					group: "nav",
+					twoState: true
+				},
+				{
+					value: 'Dataview',
+					id: 'dataview-link',
+					group: "nav",
+					twoState: true
+				},
+				{
+					value: 'Grid',
+					id: 'grid-link',
+					group: "nav",
+					twoState: true
+				},
+				{
+					value: 'Menu',
+					id: 'menu-link',
+					group: "nav",
+					twoState: true
+				},
+				{
+					value: 'Tabbar',
+					id: 'tabbar-link',
+					group: "nav",
+					twoState: true
+				},
+				{
+					value: 'Tree',
+					id: 'tree-link',
+					group: "nav",
+					twoState: true
+				},
+				{
+					value: 'Chart',
+					id: 'chart-link',
+					group: "nav",
+					twoState: true
+				},
+				{
+					value: 'Message',
+					id: 'message-link',
+					group: "nav",
+					twoState: true
+				},
+				{
+					value: 'Popup',
+					id: 'popup-link',
+					group: "nav",
+					twoState: true
+				},
+				{
+					value: 'Pivot',
+					id: 'pivot-link',
+					group: "nav",
+					twoState: true
+				},
+				{
+					value: 'Treegrid',
+					id: 'treegrid-link',
+					group: "nav",
+					twoState: true
+				},
 			],
 		});
 		this.sidebar.events.on('click', id => {

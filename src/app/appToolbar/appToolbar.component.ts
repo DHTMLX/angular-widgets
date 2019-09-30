@@ -17,7 +17,7 @@ export class AppToolbarComponent implements OnInit, OnDestroy {
   @ViewChild('apptoolbar', {static: true}) container: ElementRef;
 	toolbar: Toolbar;
 	
-	@Input() aciveHeadersLinks: [];
+	@Input() activeExample: string;
 	@Input() activeWidget?: string;
   @Output() activeExampleToEmmit = new EventEmitter<string>()
 
@@ -131,14 +131,16 @@ export class AppToolbarComponent implements OnInit, OnDestroy {
 	}
 	ngOnChanges(changes: SimpleChanges) {
 		const activeWidget: SimpleChange = changes.activeWidget;
-		if (this.toolbar) {
+		if (this.toolbar && activeWidget) {
 			if (activeWidget.currentValue) {
 				TOOOLBAR_LINKS.all.map((example, key) => {
 					this.toolbar.data.update(example + '_link', {hidden: TOOOLBAR_LINKS[activeWidget.currentValue][key] !== example})
+					this.toolbar.data.update(example + '_link', {active: example === this.activeExample})
 				}) 
 				this.toolbar.data.update('doc', {html: `<span>DHX ${activeWidget.currentValue.charAt(0).toUpperCase() + activeWidget.currentValue.slice(1)} documentation</span>`})
 				this.toolbar.data.update('title', {value: `Using DHTMLX ${activeWidget.currentValue.charAt(0).toUpperCase() + activeWidget.currentValue.slice(1) || 'widgets'} with Angular`})
 				this.toolbar.data.update('separ', {hidden: false})
+				
 			} else {
 				TOOOLBAR_LINKS.all.map((example, key) => {
 					this.toolbar.data.update(example + '_link', {hidden: true})

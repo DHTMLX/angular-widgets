@@ -2,8 +2,8 @@
 <div class='app-screen' style="min-height: 100vh; display: flex">
   <app-sidebar [activeWidget]='activeWidget' (activeWidgetToEmmit)="getActiveWidget($event)"></app-sidebar>
   <div class="app-screen__inner" style="flex-basis: auto; flex-grow: 1">
-    <app-toolbar [activeWidget]='activeWidget' (activeExampleToEmmit)="getActiveExample($event)"></app-toolbar>
-    <div class='app-content' #appcontent style="max-height: calc(100vh - 57px); overflow: auto">
+    <app-toolbar [activeWidget]='activeWidget' [activeExample]='activeExample' (activeExampleToEmmit)="getActiveExample($event)"></app-toolbar>
+    <div class='app-content'>
       <router-outlet></router-outlet>
     </div>
   </div>
